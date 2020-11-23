@@ -1,13 +1,11 @@
 <template>
-
+  <Button text="Button Text" />
 </template>
 
 <script>
+import Button from '../../Atoms/Button/Button'
 export default {
-    name: "Menu.vue"
+  name: 'Menu',
+  components: { Button }
 }
 </script>
-
-<style scoped>
-
-</style>

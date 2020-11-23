@@ -1,13 +1,11 @@
 <template>
-
+  <Menu />
 </template>
 
 <script>
+import Menu from '../../Molecules/Menu/Menu'
 export default {
-name: "Header"
+  name: 'Header',
+  components: { Menu }
 }
 </script>
-
-<style scoped>
-
-</style>

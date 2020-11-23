@@ -1,4 +1,5 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
+const styleLintPlugin = require('stylelint-webpack-plugin')
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +12,33 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/components/Pages/Top/app.js', 'public/js/top')
-    .sass('resources/sass/app.scss', 'public/css');
+mix
+  .js('resources/js/components/Pages/Top/app.js', 'public/js/top')
+  .sass('resources/sass/app.scss', 'public/css')
+
+mix.webpackConfig({
+  plugins: [
+    // eslint-disable-next-line new-cap
+    new styleLintPlugin({
+      files: ['./resources/js/components/**/*.vue'],
+      // eslint-disable-next-line no-undef
+      configFile: path.join(__dirname, '.stylelintrc.js'),
+      options: {
+        fix: false
+      }
+    })
+  ],
+  module: {
+    rules: [
+      {
+        enforce: 'pre', // preを指定することで、付いてないローダーより先に実行できる。
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        options: {
+          fix: false // Lint実行時に自動整形を行うかどうか。（prettierのルールで自動整形してくれる）
+        }
+      }
+    ]
+  }
+})

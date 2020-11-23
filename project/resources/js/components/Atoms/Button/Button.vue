@@ -1,13 +1,15 @@
 <template>
-
+  <button>{{ text }}</button>
 </template>
 
 <script>
 export default {
-name: "Button"
+  name: 'Button',
+  props: {
+    text: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
-
-<style scoped>
-
-</style>
