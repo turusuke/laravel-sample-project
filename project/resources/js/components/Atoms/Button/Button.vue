@@ -1,7 +1,6 @@
 <template>
   <v-btn v-bind="$attrs">
     {{ text }}
-    text
   </v-btn>
 </template>
 
