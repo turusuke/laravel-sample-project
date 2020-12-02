@@ -17,7 +17,7 @@
     "lint:fix:css": "stylelint \"resources/**/*.vue\" --fix",
     "lint:js": "eslint \"resources/**/*.{vue,js}\"",
     "lint:fix:js": "eslint --fix \"resources/**/*.{vue,js}\"",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "commitmsg": "commitlint -e $GIT_PARAMS --verbose --config ./commitlint.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.12.8",
