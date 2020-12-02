@@ -10,10 +10,19 @@
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "run-s lint:*",
+    "lint:fix": "run-s lint:fix:*",
+    "lint:css": "stylelint \"resources/**/*.vue\"",
+    "lint:fix:css": "stylelint \"resources/**/*.vue\" --fix",
+    "lint:js": "eslint \"resources/**/*.{vue,js}\"",
+    "lint:fix:js": "eslint --fix \"resources/**/*.{vue,js}\"",
+    "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "devDependencies": {
     "@babel/core": "^7.12.8",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@storybook/addon-actions": "^6.1.5",
     "@storybook/addon-essentials": "^6.1.5",
     "@storybook/addon-links": "^6.1.5",
@@ -27,8 +36,11 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-vue": "^7.1.0",
     "eslint-plugin-vuejs-accessibility": "^0.6.0",
+    "husky": "^4.3.0",
     "laravel-mix": "^5.0.1",
+    "lint-staged": "^10.5.2",
     "lodash": "^4.17.19",
+    "npm-run-all": "^4.1.5",
     "resolve-url-loader": "^3.1.2",
     "sass": "^1.20.1",
     "sass-loader": "^8.0.0",
@@ -43,5 +55,16 @@
     "core-js": "^3.8.0",
     "regenerator-runtime": "^0.13.7",
     "vuetify": "^2.3.19"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{vue,scss}": "prettier --write",
+    "*.vue": "eslint --cache --fix --ignore-pattern \"*.config.js\"",
+    "*.{vue}": "stylelint --syntax scss --config \"./.stylelintrc.js\" --fix"
   }
 }
