@@ -17,6 +17,12 @@ mix
   .sass('resources/sass/app.scss', 'public/css')
 
 mix.webpackConfig({
+  resolve: {
+    extensions: ['.js', '.jsx', '.vue', '.ts', '.tsx'],
+    alias: {
+      vue$: 'vue/dist/vue.esm.js'
+    }
+  },
   plugins: [
     // eslint-disable-next-line new-cap
     new styleLintPlugin({

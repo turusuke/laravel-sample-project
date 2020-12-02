@@ -1,9 +1,14 @@
-require('../../utils/bootstrap')
+// Polyfills
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
+import 'vuetify/dist/vuetify.min.css'
 
-window.Vue = require('vue')
-
-Vue.component('Top', require('./Top.vue').default)
+// Imports
+import Vue from 'vue'
+import vuetify from '../../../plugins/vuetify'
+import Top from './Top'
 
 new Vue({
-  el: '#app'
-})
+  vuetify,
+  render: h => h(Top)
+}).$mount('#app')

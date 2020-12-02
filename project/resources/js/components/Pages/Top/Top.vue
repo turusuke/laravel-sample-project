@@ -1,13 +1,22 @@
 <template>
-  <div class="container">
-    <Header />
-  </div>
+  <v-app>
+    <v-main class="container">
+      <v-container>
+        <Header />
+        <h1>Hello World</h1>
+      </v-container>
+      <Dialog />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
 import Header from '../../Organisms/Header/Header'
+import Dialog from '../../Organisms/Dialog/Dialog'
+
 export default {
-  components: { Header },
+  name: 'Top',
+  components: { Dialog, Header },
   mounted() {
     console.log('Component mounted.')
   }
@@ -16,6 +25,6 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  margin: 3em 10px;
+  border: 1px solid;
 }
 </style>
