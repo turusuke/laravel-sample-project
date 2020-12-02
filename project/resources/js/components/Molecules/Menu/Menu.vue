@@ -1,5 +1,8 @@
 <template>
-  <Button text="Button Text" />
+  <div>
+    <Button text="Button Text-1" class="ml-6" />
+    <Button text="Button Text-2" />
+  </div>
 </template>
 
 <script>

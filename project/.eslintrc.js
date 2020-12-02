@@ -15,6 +15,16 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    'vue/max-attributes-per-line': [
+      'error',
+      {
+        singleline: 5,
+        multiline: {
+          max: 1,
+          allowFirstLine: false
+        }
+      }
+    ]
   }
 }
