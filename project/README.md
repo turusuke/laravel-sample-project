@@ -6,6 +6,14 @@
 composer install
 ```
 
+## .env ファイルを作成し、 .env.example ファイルの中身をコピーする
+
+## encryption key を設定する
+
+```
+php artisan key:generate 
+```
+
 ## Laravel の起動
 
 ```
